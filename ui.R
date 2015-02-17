@@ -1,18 +1,14 @@
-library(shiny)
-shinyUI(
-  pageWithSidebar(
-    # Application title
-    headerPanel("Unchanged from the course: Diabetes prediction"),
-    sidebarPanel(
-      numericInput('glucose', 'Glucose mg/dl', 90, min = 50, max = 200, step = 5),
-      submitButton('Submit')
-    ),
-    mainPanel(
-      h3('Results of prediction'),
-      h4('You entered'),
-      verbatimTextOutput("inputValue"),
-      h4('Which resulted in a prediction of '),
-      verbatimTextOutput("prediction")
-    )
+
+shinyUI(pageWithSidebar(
+  headerPanel('SAT k-means clustering'),
+  sidebarPanel(
+    selectizeInput('xcol', 'X Variable', choices=names(SAT),options = NULL),
+    selectInput('ycol', 'Y Variable', names(SAT),
+                selected=names(SAT)[[7]]),
+    numericInput('clusters', 'Cluster count', 3,
+                 min = 1, max = 9)
+  ),
+  mainPanel(
+    plotOutput('plot1')
   )
-)
+))
