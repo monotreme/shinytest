@@ -1,4 +1,6 @@
+
 library(UsingR)
+library(shinyBS) 
 data(SAT)
 SAT$state <- NULL
 sat.full = c("State expenditure per student",
